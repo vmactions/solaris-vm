@@ -17,7 +17,10 @@ jobs:
       uses: vmactions/solaris-vm@main
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        prepare: echo 'Install something here.'
+        prepare: |
+          pkgadd -d http://get.opencsw.org/now
+          /opt/csw/bin/pkgutil -U
+          /opt/csw/bin/pkgutil -y -i socat 
         nat: |
           "8080": "80"
           "8443": "443"
