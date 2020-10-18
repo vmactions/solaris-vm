@@ -30,7 +30,7 @@ jobs:
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
-          pkgadd -d http://get.opencsw.org/now
+          echo "1\ny" |  pkgadd -v   -d http://get.opencsw.org/now
           /opt/csw/bin/pkgutil -U
           /opt/csw/bin/pkgutil -y -i socat
         nat: |
