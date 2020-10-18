@@ -65,6 +65,10 @@ async function waitFor(vmName, tag) {
 }
 
 
+async function vboxmanage(vmName, cmd, args = "") {
+  await exec.exec("sudo  vboxmanage " + cmd + "   " + vmName + "   " + args);
+}
+
 async function setup(nat) {
   try {
 
