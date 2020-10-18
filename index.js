@@ -179,8 +179,6 @@ async function setup(nat) {
     let cmd1 = "mkdir -p /Users/runner/work && ln -s /Users/runner/work/  work";
     await execSSH(cmd1, "Setting up VM");
 
-    let cmd2 = "pkg  install  -y rsync";
-    await execSSH(cmd2, "Setup rsync");
     await exec.exec("rsync -auvzrtopg  --exclude _actions/vmactions/solaris-vm  /Users/runner/work/ solaris:work");
 
 

@@ -29,7 +29,7 @@ jobs:
       uses: vmactions/solaris-vm@v0.0.1
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        prepare: pkg install -y curl
+        prepare: pkg install --accept curl
         nat: |
           "8080": "80"
           "8443": "443"
