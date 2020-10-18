@@ -1,0 +1,37 @@
+
+name: Test
+
+on: [push]
+
+jobs:
+  testsolaris:
+    runs-on: macos-latest
+    name: A job to run test Solaris
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test in solaris
+      id: test
+      uses: vmactions/solaris-vm@main
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        prepare: pkg install -y curl
+        nat: |
+          "8080": "80"
+          "8443": "443"
+          udp:"8081": "80"
+        run: |
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          cat /etc/release
+          echo "OK"

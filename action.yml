@@ -1,0 +1,23 @@
+name: 'Solaris-vm'
+description: 'Run CI in Solaris for GitHub Actions'
+inputs:
+  prepare:
+    description: 'Install some tools before CI runs'
+    required: false
+  run:
+    description: 'The CI command to run'
+    required: true
+  envs:
+    description: 'The envs to pass into the vm'
+    required: false
+  nat:
+    description: 'The NAT ports to the vm'
+    required: false
+
+branding:
+  icon: 'activity'  
+  color: 'green'
+
+runs:
+  using: 'node12'
+  main: 'index.js'
