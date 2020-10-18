@@ -110,8 +110,8 @@ async function setup(nat) {
 
     let imgName = "sol-11_4-vbox";
     let ova = imgName + ".ova";
-    let part0 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.1/sol-11_4-vbox.ova.zip";
-    let part1 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.1/sol-11_4-vbox.ova.z01";
+    let part0 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.2/sol-11_4-vbox.ova.zip";
+    let part1 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.2/sol-11_4-vbox.ova.z01";
 
 
     {
@@ -133,7 +133,8 @@ async function setup(nat) {
 
     await vboxmanage("", "import", path.join(workingDir, ova));
 
-    await vboxmanage(imgName, "modifyvm", '--natpf1 "guestssh,tcp,,' + sshport + ',,22"');
+    //the ssh port was already added in the builder.
+    //await vboxmanage(imgName, "modifyvm", '--natpf1 "guestssh,tcp,,' + sshport + ',,22"');
 
     if (nat) {
       let nats = nat.split("\n").filter(x => x !== "");
