@@ -111,8 +111,8 @@ async function setup(nat) {
 
     let imgName = "sol-11_4-vbox";
     let ova = imgName + ".ova";
-    let part0 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.2/sol-11_4-vbox.ova.zip";
-    let part1 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.2/sol-11_4-vbox.ova.z01";
+    let part0 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.3/sol-11_4-vbox.ova.zip";
+    let part1 = "https://github.com/vmactions/solaris-builder/releases/download/v0.0.3/sol-11_4-vbox.ova.z01";
 
 
     {

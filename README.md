@@ -29,10 +29,7 @@ jobs:
       uses: vmactions/solaris-vm@v0.0.1
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        prepare: |
-          echo "1\ny" |  pkgadd -v   -d http://get.opencsw.org/now
-          /opt/csw/bin/pkgutil -U
-          /opt/csw/bin/pkgutil -y -i socat
+        prepare: pkgutil -y -i socat
         nat: |
           "8080": "80"
           "8443": "443"
