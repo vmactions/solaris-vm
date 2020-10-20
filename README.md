@@ -1,13 +1,13 @@
-# Run GitHub CI in FreeBSD
+# Run GitHub CI in Solaris
 
-Use this action to run your CI in FreeBSD.
+Use this action to run your CI in Solaris.
 
-The github workflow only supports Ubuntu, Windows and MacOS. But what if you need a FreeBSD?
+The github workflow only supports Ubuntu, Windows and MacOS. But what if you need a Solaris?
 
-This action is to support FreeBSD.
+This action is to support Solaris.
 
 
-Sample workflow `freebsd.yml`:
+Sample workflow `solaris.yml`:
 
 ```yml
 
