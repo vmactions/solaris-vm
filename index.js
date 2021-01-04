@@ -70,7 +70,7 @@ async function vboxmanage(vmName, cmd, args = "") {
   await exec.exec("sudo  vboxmanage " + cmd + "   " + vmName + "   " + args);
 }
 
-async function setup(nat) {
+async function setup(nat, mem) {
   try {
 
     let sshport = 2223;
@@ -157,6 +157,9 @@ async function setup(nat) {
         }
       };
     }
+    if (mem) {
+      await vboxmanage(imgName, "modifyvm", "  --memory " + mem);
+    }
 
     await vboxmanage(imgName, "startvm", " --type headless");
 
@@ -198,9 +201,11 @@ async function setup(nat) {
 async function main() {
   let nat = core.getInput("nat");
   core.info("nat: " + nat);
-  core.info("nat json: " + JSON.stringify(nat));
 
-  await setup(nat);
+  let mem = core.getInput("mem");
+  core.info("mem: " + mem);
+
+  await setup(nat, mem);
 
   var envs = core.getInput("envs");
   console.log("envs:" + envs);

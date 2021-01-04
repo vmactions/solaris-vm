@@ -81,7 +81,6 @@ You can add NAT port between the host and the VM.
       uses: vmactions/solaris-vm@v0.0.1
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        usesh: true
         nat: |
           "8080": "80"
           "8443": "443"
@@ -89,6 +88,21 @@ You can add NAT port between the host and the VM.
 ...
 ```
 
+
+The default memory of the VM is 1024MB, you can use `mem` option to set the memory size:
+
+```
+...
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test in solaris
+      id: test
+      uses: vmactions/solaris-vm@v0.0.1
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        mem: 2048
+...
+```
 
 # Under the hood
 

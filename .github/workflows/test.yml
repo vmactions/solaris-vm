@@ -22,6 +22,7 @@ jobs:
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
+        mem: 2048
         run: |
           if [ -n "test" ]; then
             echo "false"
@@ -33,5 +34,6 @@ jobs:
           ls -lah
           whoami
           env
+          echo "::memstat" | mdb -k
           cat /etc/release
           echo "OK"
