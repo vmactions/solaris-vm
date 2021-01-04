@@ -22,7 +22,7 @@ jobs:
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
-        mem: 2048
+        mem: 5000
         run: |
           if [ -n "test" ]; then
             echo "false"
