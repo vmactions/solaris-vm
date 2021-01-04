@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.1
+      uses: vmactions/solaris-vm@v0.0.2
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: pkgutil -y -i socat
@@ -78,7 +78,7 @@ You can add NAT port between the host and the VM.
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.1
+      uses: vmactions/solaris-vm@v0.0.2
       with:
         envs: 'MYTOKEN MYTOKEN2'
         nat: |
@@ -89,7 +89,7 @@ You can add NAT port between the host and the VM.
 ```
 
 
-The default memory of the VM is 1024MB, you can use `mem` option to set the memory size:
+The default memory of the VM is 4096MB, you can use `mem` option to set the memory size:
 
 ```
 ...
@@ -97,10 +97,10 @@ The default memory of the VM is 1024MB, you can use `mem` option to set the memo
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.1
+      uses: vmactions/solaris-vm@v0.0.2
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        mem: 2048
+        mem: 5000
 ...
 ```
 

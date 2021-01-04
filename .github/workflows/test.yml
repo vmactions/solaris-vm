@@ -34,6 +34,6 @@ jobs:
           ls -lah
           whoami
           env
-          echo "::memstat" | mdb -k
+          prtconf | grep Memory
           cat /etc/release
           echo "OK"
