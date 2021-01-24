@@ -160,6 +160,7 @@ async function setup(nat, mem) {
     if (mem) {
       await vboxmanage(imgName, "modifyvm", "  --memory " + mem);
     }
+    await vboxmanage(imgName, "modifyvm", "  --cpus 3 ");
 
     await vboxmanage(imgName, "startvm", " --type headless");
 

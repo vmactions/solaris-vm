@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.2
+      uses: vmactions/solaris-vm@v0.0.3
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: pkgutil -y -i socat
@@ -45,6 +45,7 @@ jobs:
           ls -lah
           whoami
           env
+          psrinfo -vp
           cat /etc/release
           echo "OK"
 
@@ -78,7 +79,7 @@ You can add NAT port between the host and the VM.
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.2
+      uses: vmactions/solaris-vm@v0.0.3
       with:
         envs: 'MYTOKEN MYTOKEN2'
         nat: |
@@ -97,7 +98,7 @@ The default memory of the VM is 4096MB, you can use `mem` option to set the memo
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.2
+      uses: vmactions/solaris-vm@v0.0.3
       with:
         envs: 'MYTOKEN MYTOKEN2'
         mem: 5000
