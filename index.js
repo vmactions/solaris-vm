@@ -83,25 +83,25 @@ async function setup(nat, mem) {
 
     let workingDir = __dirname;
 
-    if (process.env["DEBUG"]) {
-      let sdk = "https://download.virtualbox.org/virtualbox/6.1.14/Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack";
-      core.info("Downloading sdk: " + sdk);
-      let img = await tc.downloadTool(sdk);
-      core.info("Downloaded file: " + img);
-      await io.mv(img, path.join(workingDir, "./Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack"));
-      await exec.exec("sudo vboxmanage extpack install    --replace " + path.join(workingDir, "./Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack"), [], { input: "y\n" });
-
-
-      let ng = await tc.downloadTool("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip");
-
-      let token = process.env["NGROK_TOKEN"];
-      await io.mv(ng, path.join(workingDir, "./ngrok-stable-darwin-amd64.zip"));
-      await exec.exec("unzip -o " + path.join(workingDir, "./ngrok-stable-darwin-amd64.zip"));
-      await exec.exec("./ngrok authtoken " + token);
-      exec.exec("./ngrok  tcp   3390").catch((e) => {
-        //
-      });
-    }
+#    if (process.env["DEBUG"]) {
+#      let sdk = "https://download.virtualbox.org/virtualbox/6.1.14/Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack";
+#      core.info("Downloading sdk: " + sdk);
+#      let img = await tc.downloadTool(sdk);
+#      core.info("Downloaded file: " + img);
+#      await io.mv(img, path.join(workingDir, "./Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack"));
+#      await exec.exec("sudo vboxmanage extpack install    --replace " + path.join(workingDir, "./Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack"), [], { input: "y\n" });
+#
+#
+#      let ng = await tc.downloadTool("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip");
+#
+#      let token = process.env["NGROK_TOKEN"];
+#      await io.mv(ng, path.join(workingDir, "./ngrok-stable-darwin-amd64.zip"));
+#      await exec.exec("unzip -o " + path.join(workingDir, "./ngrok-stable-darwin-amd64.zip"));
+#      await exec.exec("./ngrok authtoken " + token);
+#      exec.exec("./ngrok  tcp   3390").catch((e) => {
+#        //
+#      });
+#    }
 
 
     core.info("Install tesseract");
