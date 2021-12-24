@@ -214,6 +214,10 @@ async function main() {
     fs.appendFileSync(path.join(process.env["HOME"], "/.ssh/config"), "SendEnv " + envs + "\n");
   }
 
+  //update ca certificates.
+  var cacerts = "/opt/csw/bin/pkgutil -U && /opt/csw/bin/pkgutil -y -i cacertificates && rm -rf /etc/openssl/certs/* && cp /etc/opt/csw/ssl/certs/* /etc/openssl/certs/"
+  await exec.exec("ssh -t solaris", [], { input: cacerts });
+
   var prepare = core.getInput("prepare");
   if (prepare) {
     core.info("Running prepare: " + prepare);
