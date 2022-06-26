@@ -17,7 +17,7 @@ on: [push]
 
 jobs:
   testsolaris:
-    runs-on: macos-10.15
+    runs-on: macos-12
     name: A job to run test Solaris
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}
