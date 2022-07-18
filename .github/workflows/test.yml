@@ -12,6 +12,7 @@ on:
       - 'conf/*'
 
 jobs:
+  test:
     strategy:
       matrix:
         release: [ "", "11.4"]
@@ -28,11 +29,13 @@ jobs:
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: pkgutil -y -i socat 
+        mem: 2048
+        release: ${{ matrix.release }}
         nat: |
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
-        mem: 5000
+        usesh: true
         run: |
           if [ -n "test" ]; then
             echo "false"
