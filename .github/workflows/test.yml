@@ -1,10 +1,20 @@
 
 name: Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - '**.sh'
+      - '.github/workflows/test.yml'
+      - 'index.js'
+      - 'conf/*'
 
 jobs:
-  testsolaris:
+    strategy:
+      matrix:
+        release: [ "", "11.4"]
     runs-on: macos-12
     name: A job to run test Solaris
     env:
