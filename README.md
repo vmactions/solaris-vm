@@ -16,7 +16,7 @@ name: Test
 on: [push]
 
 jobs:
-  testsolaris:
+  test:
     runs-on: macos-12
     name: A job to run test Solaris
     env:
@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.3
+      uses: vmactions/solaris-vm@v0.0.6
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: pkgutil -y -i socat
@@ -53,7 +53,7 @@ jobs:
 ```
 
 
-The `runs-on: macos-latest` must be `macos-latest`.
+The `runs-on: macos-12` must be `macos-12`.
 
 The `envs: 'MYTOKEN MYTOKEN2'` is the env names that you want to pass into solaris vm.
 
@@ -68,7 +68,7 @@ All the source code tree in the Host machine are mounted into the VM.
 
 All the `GITHUB_*` as well as `CI=true` env variables are passed into the VM.
 
-So, you will have the same directory and same defualt env variables when you `run` the CI script.
+So, you will have the same directory and same default env variables when you `run` the CI script.
 
 
 You can add NAT port between the host and the VM.
@@ -79,7 +79,7 @@ You can add NAT port between the host and the VM.
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.3
+      uses: vmactions/solaris-vm@v0.0.6
       with:
         envs: 'MYTOKEN MYTOKEN2'
         nat: |
@@ -98,16 +98,35 @@ The default memory of the VM is 4096MB, you can use `mem` option to set the memo
     - uses: actions/checkout@v2
     - name: Test in solaris
       id: test
-      uses: vmactions/solaris-vm@v0.0.3
+      uses: vmactions/solaris-vm@v0.0.6
       with:
         envs: 'MYTOKEN MYTOKEN2'
         mem: 5000
 ...
 ```
 
+
+
+It uses [the latest Solaris release](conf/default.release.conf) by default, you can use `release` option to use another version of Solaris:
+
+```
+...
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test in Solaris
+      id: test
+      uses: vmactions/solaris-vm@v0.0.6
+      with:
+        release: 11.4
+...
+```
+
+All the supported releases are here: [conf](conf)
+
+
 # Under the hood
 
-GitHub only supports Ubuntu, Windows and MacOS out of the box. 
+GitHub only supports Ubuntu, Windows and MacOS out of the box.
 
 However, the MacOS support virtualization. It has VirtualBox installed.
 
