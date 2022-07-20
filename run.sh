@@ -170,6 +170,13 @@ runSSHFSInVM() {
 }
 
 
+onStarted() {
+  if [ -e "onStarted.sh" ]; then
+    ssh "$osname" <onStarted.sh
+  fi
+}
+
+
 
 "$@"
 
