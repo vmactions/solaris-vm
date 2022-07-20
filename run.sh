@@ -161,7 +161,8 @@ rsyncBackFromVM() {
 
 
 installRsyncInVM() {
-  ssh "$osname" "$VM_INSTALL_CMD $VM_RSYNC_PKG"
+  #ssh "$osname" "$VM_INSTALL_CMD $VM_RSYNC_PKG"
+  echo "do nothing"
 }
 
 runSSHFSInVM() {
