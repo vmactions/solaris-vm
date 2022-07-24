@@ -150,7 +150,7 @@ It uses [the latest Solaris 11.4](conf/default.release.conf) by default, you can
 ...
 ```
 
-All the supported releases are here: [Solaris  "11.4", "](conf)
+All the supported releases are here: [Solaris  11.4](conf)
 
 
 # Under the hood
