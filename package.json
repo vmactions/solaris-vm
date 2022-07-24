@@ -1,0 +1,25 @@
+{
+  "name": "vmactions-Solaris",
+  "version": "0.0.1",
+  "description": "GitHub actions for Solaris",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vmactions/solaris-vm.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "Solaris"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmactions/solaris-vm/issues"
+  },
+  "homepage": "https://github.com/vmactions/solaris-vm",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/exec": "^1.1.1"
+  }
+}
