@@ -102,6 +102,36 @@ The code is shared from the host to the VM via `rsync`, you can choose to use to
 
 ```
 
+
+When using `rsync`,  you can define `copyback: false` to not copy files back from the VM in to the host.
+
+
+```
+
+...
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test
+      id: test
+      uses: vmactions/solaris-vm@v0
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        usesh: true
+        sync: rsync
+        copyback: false
+        prepare: |
+          pkgutil -y -i socat
+
+
+
+...
+
+
+```
+
+
+
 You can add NAT port between the host and the VM.
 
 ```
