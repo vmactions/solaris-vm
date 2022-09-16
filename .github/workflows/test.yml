@@ -24,6 +24,38 @@ concurrency:
 
 
 jobs:
+  testsshfs:
+    if: ${{ !contains(github.repository, 'solaris') }}
+    strategy:
+      matrix:
+        release: [ "11.4", ""]
+    runs-on: macos-12
+    name: A job to run test sshfs Solaris
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test in Solaris
+      id: test
+      uses: vmactions/solaris-vm@main
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        prepare: |
+          pkgutil -y -i socat
+        mem: 2048
+        copyback: false
+        release: ${{ matrix.release }}
+        nat: |
+          "8080": "80"
+          "8443": "443"
+          udp:"8081": "80"
+        usesh: true
+        sync: sshfs
+        run: |
+          tree .
+          tree /Users/runner/work/
+
   test:
     strategy:
       matrix:
@@ -64,3 +96,13 @@ jobs:
           psrinfo -vp
           cat /etc/release
           echo "OK"
+
+
+
+
+
+
+
+
+
+
