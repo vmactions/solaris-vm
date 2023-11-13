@@ -29,11 +29,13 @@ jobs:
     strategy:
       matrix:
         release: [ "11.4", ""]
-    runs-on: macos-12
-    name: A job to run test sshfs Solaris
+        runs: [ "ubuntu-22.04"]
+    runs-on: ${{ matrix.runs }}
+    name: sshfs Solaris
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
+      SEC_VBOX : ${{ secrets.SEC_VBOX }}
     steps:
     - uses: actions/checkout@v3
     - name: Test in Solaris
@@ -54,17 +56,19 @@ jobs:
         sync: sshfs
         run: |
           tree .
-          tree /Users/runner/work/
+          tree $HOME/work/
 
   test:
     strategy:
       matrix:
         release: [ "11.4", ""]
-    runs-on: macos-12
-    name: A job to run test Solaris
+        runs: [ "ubuntu-22.04"]
+    runs-on: ${{ matrix.runs }}
+    name: Solaris
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
+      SEC_VBOX : ${{ secrets.SEC_VBOX }}
     steps:
     - uses: actions/checkout@v3
     - name: Test in Solaris
