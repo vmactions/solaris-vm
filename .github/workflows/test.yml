@@ -37,10 +37,10 @@ jobs:
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ secrets.SEC_VBOX }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@main
+      uses: vmactions/solaris-vm@a1bf6ab4cd8352772b1debbb01ee9e132b0d6d9c
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -49,6 +49,7 @@ jobs:
         copyback: false
         release: ${{ matrix.release }}
         nat: |
+          "10022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
@@ -57,6 +58,9 @@ jobs:
         run: |
           tree .
           tree $HOME/work/
+    - name: Test NAT
+      run: 
+        ssh -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
   test:
     strategy:
@@ -70,10 +74,10 @@ jobs:
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ secrets.SEC_VBOX }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@main
+      uses: vmactions/solaris-vm@a1bf6ab4cd8352772b1debbb01ee9e132b0d6d9c
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -82,6 +86,7 @@ jobs:
         copyback: false
         release: ${{ matrix.release }}
         nat: |
+          "10022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
@@ -100,6 +105,9 @@ jobs:
           psrinfo -vp
           cat /etc/release
           echo "OK"
+    - name: Test NAT
+      run: 
+        ssh -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
 
 
