@@ -40,7 +40,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@0430a11ff1dc748e5c70016dc50e457e4d327297
+      uses: vmactions/solaris-vm@38ac6e09f69ea3872c6438c4d20266f96d1168b8
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -77,7 +77,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@0430a11ff1dc748e5c70016dc50e457e4d327297
+      uses: vmactions/solaris-vm@38ac6e09f69ea3872c6438c4d20266f96d1168b8
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
