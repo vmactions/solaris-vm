@@ -46,6 +46,8 @@ jobs:
           env
           psrinfo -vp
           cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
           echo "OK"
 
 
