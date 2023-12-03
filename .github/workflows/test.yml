@@ -36,13 +36,20 @@ jobs:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ secrets.SEC_VBOX }}
+      DEBUG: 1
     steps:
     - uses: actions/checkout@v4
+    - name: Creating Web console
+      uses: vmactions/cf-tunnel@v0
+      id: tunnel
+      with:
+        protocol: http
+        port: 8000
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@d3f83b81f8a32949116e768e129cd3da5bdde5de
+      uses: vmactions/solaris-vm@8cceb652a3a7f88178128e05078b4ef5bc5228dc
       with:
-        envs: 'MYTOKEN MYTOKEN2'
+        envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
           pkgutil -y -i socat
         mem: 2048
@@ -60,7 +67,7 @@ jobs:
           tree $HOME/work/
     - name: Test NAT
       run: 
-        ssh -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
   test:
     strategy:
@@ -77,7 +84,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@d3f83b81f8a32949116e768e129cd3da5bdde5de
+      uses: vmactions/solaris-vm@8cceb652a3a7f88178128e05078b4ef5bc5228dc
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -104,10 +111,12 @@ jobs:
           env
           psrinfo -vp
           cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
           echo "OK"
     - name: Test NAT
       run: 
-        ssh -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
 
 
