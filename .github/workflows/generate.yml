@@ -32,7 +32,7 @@ jobs:
           git switch main || (git fetch --all && git checkout -b main origin/main)
           . conf/default.release.conf
           echo "DEFAULT_RELEASE=$DEFAULT_RELEASE" >> $GITHUB_ENV
-          echo "ALL_RELEASES=\"$(ls conf/ | grep -v default | sed 's/.conf//g' | tr '\n' ',' | sed "s/,\$//" | sed 's/,/", "/g')\"" >> $GITHUB_ENV
+          echo "ALL_RELEASES='\"$(ls conf/ | grep -v default | sed 's/.conf//g' | tr '\n' ',' | sed "s/,\$//" | sed 's/,/", "/g')\"'" >> $GITHUB_ENV
           LATEST_TAG="${{ steps.get-latest-release.outputs.tag_name }}"
           echo "LATEST_TAG=${LATEST_TAG}" >> $GITHUB_ENV
           echo "LATEST_VERSION_NUMBER=${LATEST_TAG:1}" >> $GITHUB_ENV
