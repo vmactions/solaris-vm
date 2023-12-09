@@ -56,7 +56,7 @@ jobs:
 ```
 
 
-The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.0.0`)  
+The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.0.1`)  
 
 
 If you are migrating from the previous `v0`, please change the `runs-on: ` to `runs-on: ubuntu-latest`
@@ -186,7 +186,7 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
 ...
 ```
 
-All the supported releases are here: [Solaris  11.4](conf)
+All the supported releases are here: [Solaris  11.4-gcc, 11.4](conf)
 
 
 # Under the hood
