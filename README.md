@@ -182,7 +182,7 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
       id: test
       uses: vmactions/solaris-vm@v1
       with:
-        release: 11.4
+        release: 11.4-gcc
 ...
 ```
 
