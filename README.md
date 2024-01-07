@@ -186,7 +186,7 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
 ...
 ```
 
-All the supported releases are here: Solaris  11.4-gcc, 11.4 [See all here](conf)
+All the supported releases are here: Solaris  11.4-gcc, 11.4, test.releases [See all here](conf)
 
 
 # Under the hood
