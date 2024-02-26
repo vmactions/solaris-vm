@@ -68,8 +68,11 @@ jobs:
             echo "sshfs error."
             exit 1
           fi
+          echo "TEST_ENV=abc" >>${GITHUB_ENV}
     - name: Test NAT
-      run: 
+      run:
+        echo "TEST_ENV=$TEST_ENV"
+        [ "$TEST_ENV" = "abc" ]
         ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
   test:
@@ -101,6 +104,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         run: |
+          echo "TEST_ENV=abc" >>${GITHUB_ENV}
           if [ -n "test" ]; then
             echo "false"
           fi
@@ -117,7 +121,9 @@ jobs:
           echo "::memstat" | mdb -k
           echo "OK"
     - name: Test NAT
-      run: 
+      run:
+        echo "TEST_ENV=$TEST_ENV"
+        [ "$TEST_ENV" = "abc" ]
         ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
 
