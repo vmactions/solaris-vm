@@ -47,7 +47,7 @@ jobs:
         port: 8000
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@dd4a7067adec2449ab525cf04968ec1d32f8c0ec
+      uses: vmactions/solaris-vm@82108872a9e9417b5a29dce3263f2550bb103b89
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -90,7 +90,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@dd4a7067adec2449ab525cf04968ec1d32f8c0ec
+      uses: vmactions/solaris-vm@82108872a9e9417b5a29dce3263f2550bb103b89
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
