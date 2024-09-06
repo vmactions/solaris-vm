@@ -29,7 +29,7 @@ jobs:
     strategy:
       matrix:
         release: [ "11.4", ""]
-        runs: [ "ubuntu-22.04"]
+        runs: [ "ubuntu-22.04", "ubuntu-24.04", "ubuntu-latest"]
     runs-on: ${{ matrix.runs }}
     name: sshfs Solaris
     env:
@@ -47,7 +47,7 @@ jobs:
         port: 8000
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@82108872a9e9417b5a29dce3263f2550bb103b89
+      uses: vmactions/solaris-vm@91188160f2f05426eea1050121d24d9b2689eb29
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -79,7 +79,7 @@ jobs:
     strategy:
       matrix:
         release: [ "11.4", ""]
-        runs: [ "ubuntu-22.04"]
+        runs: [ "ubuntu-22.04", "ubuntu-24.04", "ubuntu-latest"]
     runs-on: ${{ matrix.runs }}
     name: Solaris
     env:
@@ -90,7 +90,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@82108872a9e9417b5a29dce3263f2550bb103b89
+      uses: vmactions/solaris-vm@91188160f2f05426eea1050121d24d9b2689eb29
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
