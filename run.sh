@@ -105,16 +105,19 @@ importVM() {
       _url="${OVA_LINK}.$i"
       echo "Checking $_url"
       if ! check_url_exists "$_url"; then
+        echo "break"
         break
       fi
       axel -n 8 -o "${ovafile}.$i" -q "$_url"
+      ls -lah
       cat "${ovafile}.$i" >>"$ovafile"
       rm -f "${ovafile}.$i"
     done
-
-    echo "Download finished, extract"
-    xz -d $ovafile
+    ls -lah
+    echo "Download finished, extracting"
+    xz -v -d $ovafile
     echo "Extract finished"
+    ls -lah
   fi
 
   if [ ! -e "id_rsa.pub" ]; then
