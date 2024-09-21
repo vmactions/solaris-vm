@@ -1,6 +1,6 @@
 {
   "name": "vmactions-Solaris",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "GitHub actions for Solaris",
   "main": "index.js",
   "repository": {
