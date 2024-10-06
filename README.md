@@ -206,6 +206,34 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
 All the supported releases are here: Solaris  11.4-gcc, 11.4, test.releases [See all here](conf)
 
 
+
+
+Support custom shell:
+
+```
+...
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test
+      id: vm
+      uses: vmactions/solaris-vm@v1
+    - name: Custom shell step 1
+	  shell: solaris {0}
+	  run: |
+	    cd $GITHUB_WORKSPACE;
+        pwd
+        echo "this is step 1, running inside the VM"
+    - name: Custom shell step 2
+	  shell: solaris {0}
+	  run: |
+	    cd $GITHUB_WORKSPACE;
+        pwd
+        echo "this is step 2, running inside the VM"
+...
+```
+
+
+
 # Under the hood
 
 We use Qemu and Libvirt to run the Solaris VM.
