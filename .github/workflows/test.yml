@@ -47,7 +47,7 @@ jobs:
         port: 8000
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@fcaf8a3e47dfc514dac0f15b49a5c736d9b78be0
+      uses: vmactions/solaris-vm@fa459d368967f5c97f5ec2dd0c33a35c85ff314e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -127,7 +127,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@fcaf8a3e47dfc514dac0f15b49a5c736d9b78be0
+      uses: vmactions/solaris-vm@fa459d368967f5c97f5ec2dd0c33a35c85ff314e
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -163,7 +163,27 @@ jobs:
         [ "$TEST_ENV" = "abc" ]
         ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
 
-
+    - name: Test custom shell
+      shell: solaris {0}
+      run: |
+        pwd
+        cd $GITHUB_WORKSPACE;
+        pwd
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
 
 
 
