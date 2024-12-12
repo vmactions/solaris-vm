@@ -284,7 +284,6 @@ setupNFSShare() {
 
   ssh "$osname" sh <<EOF
 mount -F nfs 192.168.122.1:$HOME/work $HOME/work/
-tree $HOME/work
 EOF
 
   echo "Done configuring NFS"
