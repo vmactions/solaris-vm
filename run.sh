@@ -275,6 +275,21 @@ EOF
 
 }
 
+setupNFSShare() {
+  sudo apt-get install -y nfs-kernel-server
+  echo "$HOME/work *(rw,async,no_subtree_check,anonuid=$(id -u),anongid=$(id -g))" | sudo tee -a /etc/exports
+  sudo exportfs -a
+
+  echo "Configuring NFS"
+
+  ssh "$osname" sh <<EOF
+mount -F nfs 192.168.122.1:$HOME/work $HOME/work/
+tree $HOME/work
+EOF
+
+  echo "Done configuring NFS"
+}
+
 
 #run in the vm, just as soon as the vm is up
 onStarted() {
