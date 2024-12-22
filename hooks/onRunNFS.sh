@@ -1,0 +1,1 @@
+mount -F nfs 192.168.122.1:$HOME/work $HOME/work/
