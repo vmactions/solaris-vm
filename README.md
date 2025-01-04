@@ -5,6 +5,11 @@ Use this action to run your CI in Solaris.
 The github workflow only supports Ubuntu, Windows and MacOS. But what if you need to use Solaris?
 
 
+All the supported releases are here:
+
+{{RELEASE_TABLE}}
+
+
 
 
 ## 1. Example: `test.yml`:
@@ -230,11 +235,6 @@ The vm is using x86_64(AMD64) by default, but you can use `arch` option to chang
         arch: aarch64
 ...
 ```
-
-
-All the supported releases are here:
-
-{{RELEASE_TABLE}}
 
 
 
