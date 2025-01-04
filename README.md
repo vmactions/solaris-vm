@@ -7,7 +7,16 @@ The github workflow only supports Ubuntu, Windows and MacOS. But what if you nee
 
 All the supported releases are here:
 
-{{RELEASE_TABLE}}
+
+
+| Release | x86_64  | aarch64 |
+|---------|---------|---------|
+| 11.4     |  ✅     | ❌   |
+| 11.4-gcc     |  ✅     | ❌   |
+
+
+
+
 
 
 
