@@ -260,7 +260,7 @@ Support custom shell:
       id: vm
       uses: vmactions/solaris-vm@v1
       with:
-        sync: sshfs
+        sync: nfs
     - name: Custom shell step 1
       shell: solaris {0}
       run: |
