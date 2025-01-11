@@ -9,10 +9,12 @@ All the supported releases are here:
 
 
 
-| Release | x86_64  | aarch64 |
+| Release | x86_64  | aarch64(arm64) |
 |---------|---------|---------|
-| 11.4     |  ✅     | ❌   |
-| 11.4-gcc     |  ✅     | ❌   |
+| 11.4    |  ✅     | ❌   |
+| 11.4-gcc|  ✅     | ❌   |
+
+
 
 
 
