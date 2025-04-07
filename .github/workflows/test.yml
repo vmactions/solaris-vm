@@ -99,6 +99,7 @@ jobs:
             echo "sshfs error."
             exit 1
           fi
+          env
           echo "TEST_ENV=abc" >>${GITHUB_ENV}
           if [ -n "test" ]; then
             echo "false"
@@ -223,6 +224,7 @@ jobs:
             echo "nfs error."
             exit 1
           fi
+          env
           echo "TEST_ENV=abc" >>${GITHUB_ENV}
           if [ -n "test" ]; then
             echo "false"
@@ -333,6 +335,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         run: |
+          env
           echo "TEST_ENV=abc" >>${GITHUB_ENV}
           if [ -n "test" ]; then
             echo "false"
