@@ -47,7 +47,7 @@ jobs:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
         prepare: |
-          pkg install --no-backup-be  --accept -v socat
+          pkgutil -y -i socat
 
         run: |
           if [ -n "test" ]; then
@@ -115,7 +115,7 @@ The code is shared from the host to the VM via `rsync` by default, you can choos
         usesh: true
         sync: sshfs  # or: nfs
         prepare: |
-          pkg install --no-backup-be  --accept -v socat
+          pkgutil -y -i socat
 
 
 
@@ -145,7 +145,7 @@ When using `rsync`,  you can define `copyback: false` to not copy files back fro
         sync: rsync
         copyback: false
         prepare: |
-          pkg install --no-backup-be  --accept -v socat
+          pkgutil -y -i socat
 
 
 
