@@ -31,7 +31,10 @@ jobs:
       matrix:
         release: [ "11.4","11.4-gcc", ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
 
     runs-on: ${{ matrix.runs }}
     name: sshfs Solaris
@@ -157,7 +160,11 @@ jobs:
       matrix:
         release: [ "11.4","11.4-gcc", ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
+
     runs-on: ${{ matrix.runs }}
     name: nfs Solaris
     env:
@@ -282,7 +289,11 @@ jobs:
       matrix:
         release: [ "11.4","11.4-gcc", ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
+
     runs-on: ${{ matrix.runs }}
     name: Solaris
     env:
