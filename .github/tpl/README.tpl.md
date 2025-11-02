@@ -227,7 +227,7 @@ The vm is using x86_64(AMD64) by default, but you can use `arch` option to chang
 ...
 ```
 
-When you run with `aarch64`, the host runner should still be the normal x86_64 runner: {{VM_RUNS_ON}}
+When you run with `aarch64`, the host runner should still be the normal x86_64 runner: `runs-on: {{VM_RUNS_ON}}`
 
 It's not recommended to use 'ubuntu-24.04-arm' as runner, it's much more slower.
 
