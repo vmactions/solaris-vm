@@ -40,7 +40,7 @@ jobs:
           cat base-vm/.github/tpl/README.tpl.md >.github/tpl/README.tpl.md
 
       - name: Generate files
-        uses: vmactions/template-render@v0.0.1
+        uses: vmactions/template-render@v0.0.2
         with:
           datafile: .github/data/datafile.ini
           files: |
@@ -91,7 +91,7 @@ jobs:
           fi
       - uses: EndBug/add-and-commit@v9
         with:
-          message: "Update from base vm"
+          message: "Update ${{ github.repository }} from base vm"
           pull: '--rebase --autostash '
           add: |
             .github/workflows/readme.yml
