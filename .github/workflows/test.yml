@@ -37,6 +37,13 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
 
 
     runs-on: ${{ matrix.runs }}
@@ -89,7 +96,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@04a14abf0e76726dadf643f6e3306d9407ed7ab0
+      uses: vmactions/solaris-vm@604f12205789055bd904dbeabd5961aaaa5f839e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -174,6 +181,13 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
 
 
     runs-on: ${{ matrix.runs }}
@@ -226,7 +240,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@04a14abf0e76726dadf643f6e3306d9407ed7ab0
+      uses: vmactions/solaris-vm@604f12205789055bd904dbeabd5961aaaa5f839e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -309,6 +323,13 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
 
 
     runs-on: ${{ matrix.runs }}
@@ -356,7 +377,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@04a14abf0e76726dadf643f6e3306d9407ed7ab0
+      uses: vmactions/solaris-vm@604f12205789055bd904dbeabd5961aaaa5f839e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -441,6 +462,13 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
 
 
 
@@ -486,7 +514,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@04a14abf0e76726dadf643f6e3306d9407ed7ab0
+      uses: vmactions/solaris-vm@604f12205789055bd904dbeabd5961aaaa5f839e
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
