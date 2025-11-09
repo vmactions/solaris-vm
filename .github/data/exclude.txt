@@ -1,0 +1,7 @@
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
