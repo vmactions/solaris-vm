@@ -38,6 +38,7 @@ jobs:
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
 
+
     runs-on: ${{ matrix.runs }}
     name: sshfs Solaris
     env:
@@ -88,7 +89,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@bdde02f104ac4235af846ca42df140a0c1b9c7a4
+      uses: vmactions/solaris-vm@59dee04378393501fb43c0f777483e4c6c4d7bac
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -174,6 +175,7 @@ jobs:
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
 
+
     runs-on: ${{ matrix.runs }}
     name: nfs Solaris
     env:
@@ -224,7 +226,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@bdde02f104ac4235af846ca42df140a0c1b9c7a4
+      uses: vmactions/solaris-vm@59dee04378393501fb43c0f777483e4c6c4d7bac
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -308,6 +310,7 @@ jobs:
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
 
+
     runs-on: ${{ matrix.runs }}
     name: scp Solaris
     env:
@@ -353,7 +356,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@bdde02f104ac4235af846ca42df140a0c1b9c7a4
+      uses: vmactions/solaris-vm@59dee04378393501fb43c0f777483e4c6c4d7bac
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -439,8 +442,10 @@ jobs:
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
 
+
+
     runs-on: ${{ matrix.runs }}
-    name: Solaris
+    name: rsync default Solaris
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
@@ -481,7 +486,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@bdde02f104ac4235af846ca42df140a0c1b9c7a4
+      uses: vmactions/solaris-vm@59dee04378393501fb43c0f777483e4c6c4d7bac
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
