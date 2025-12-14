@@ -1,6 +1,10 @@
 name: 'Solaris-vm'
 description: 'Run CI in Solaris for GitHub Actions'
 inputs:
+  osname:
+    description: 'The OS name'
+    required: false
+    default: 'Solaris'
   prepare:
     description: 'Install some tools before CI runs'
     required: false
