@@ -110,7 +110,10 @@ async function execSSH(cmd, sshConfig, ignoreReturn = false) {
   const host = sshConfig.host;
 
   try {
-    await exec.exec("ssh", [...args, host, cmd]);
+    // Pipe command to sh stdin to avoid escaping issues and support multi-line commands
+    await exec.exec("ssh", [...args, host, "sh"], {
+      input: Buffer.from(cmd)
+    });
   } catch (err) {
     if (!ignoreReturn) {
       throw err;
@@ -299,7 +302,7 @@ async function main() {
     let sshHost = osName;
     args.push("--ssh-name", sshHost);
 
-    core.startGroup("Starting VM with anyvm.py");
+    core.startGroup("Starting VM with anyvm.org");
     let output = "";
     const options = {
       listeners: {
@@ -343,19 +346,38 @@ async function main() {
 
 
 
+    const work = path.join(process.env["HOME"], "work");
+    const vmWork = path.join(process.env["HOME"], "work");
+
     if (isScpOrRsync) {
       core.startGroup("Syncing source code to VM");
+      // Install rsync in VM if needed
+      if (sync !== 'scp') {
+        core.info("Installing rsync in VM...");
+        if (osName.includes('netbsd')) {
+          await execSSH("/usr/sbin/pkg_add rsync", { host: sshHost }, true);
+        }
+      }
+
+      core.startGroup("Syncing source code to VM");
+      await execSSH(`rm -rf ${vmWork}`, { host: sshHost });
+      await execSSH(`mkdir -p ${vmWork}`, { host: sshHost });
       if (sync === 'scp') {
         core.info("Syncing via SCP");
         await scpToVM(sshHost);
       } else {
         core.info("Syncing via Rsync");
-        await exec.exec("rsync", ["-avrtopg", "--exclude", "_actions", "--exclude", "_PipelineMapping", path.join(process.env["HOME"], "work/"), `${sshHost}:work/`]);
+        await exec.exec("rsync", ["-avrtopg", "--exclude", "_actions", "--exclude", "_PipelineMapping", "-e", "ssh", work + "/", `${sshHost}:${vmWork}/`]);
+        if (debug) {
+          core.startGroup("Debug: Checking VM work directory content");
+          await execSSH(`tree -L 2 ${vmWork}`, { host: sshHost });
+          core.endGroup();
+        }
       }
       core.endGroup();
     }
     if (sync !== 'no') {
-      await execSSH(`ln -s ${path.join(process.env["HOME"], "work")} $HOME/work`, { host: sshHost });
+      await execSSH(`ln -s ${vmWork} $HOME/work`, { host: sshHost });
     }
     core.startGroup("Run 'prepare' in VM");
     if (prepare) {
@@ -374,9 +396,8 @@ async function main() {
       const workspace = process.env['GITHUB_WORKSPACE'];
       if (workspace) {
         core.info("Copying back artifacts");
-        const work = path.join(process.env["HOME"], "work");
         if (sync === 'scp') {
-          const remoteTarCmd = `tar -cf - -C "${work}" --exclude .git .`;
+          const remoteTarCmd = `cd "${work}" && find . -name .git -prune -o -print | cpio -o -H ustar`;
           core.info(`Exec SSH: ${remoteTarCmd}`);
 
           await new Promise((resolve, reject) => {
@@ -402,7 +423,7 @@ async function main() {
             tarProc.on('error', reject);
           });
         } else {
-          await exec.exec("rsync", ["-vrtopg", `${sshHost}:${work}/`, work + "/"]);
+          await exec.exec("rsync", ["-av", "--exclude", ".git", "--exclude", "node_modules", "--exclude", "target", "-e", "ssh", `${sshHost}:${vmWork}/`, `${work}/`]);
         }
       }
     }
