@@ -93,6 +93,7 @@ jobs:
       with:
         protocol: http
         port: 8000
+
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
