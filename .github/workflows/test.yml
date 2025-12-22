@@ -98,7 +98,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@aab30f793312407e3c4b93fc12aa5e7d9e863c1c
+      uses: vmactions/solaris-vm@0dc946f23f755add78ae7bf6338d1320c6df3d17
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -246,7 +246,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@aab30f793312407e3c4b93fc12aa5e7d9e863c1c
+      uses: vmactions/solaris-vm@0dc946f23f755add78ae7bf6338d1320c6df3d17
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -260,6 +260,7 @@ jobs:
           "8443": "443"
           udp:"8081": "80"
         usesh: true
+        debug: true
         sync: nfs
         run: |
           ls -lah /root/work
@@ -390,7 +391,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@aab30f793312407e3c4b93fc12aa5e7d9e863c1c
+      uses: vmactions/solaris-vm@0dc946f23f755add78ae7bf6338d1320c6df3d17
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -404,6 +405,7 @@ jobs:
           "8443": "443"
           udp:"8081": "80"
         usesh: true
+        debug: true
         sync: scp
         run: |
           ls -lah /root/work
@@ -515,7 +517,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@aab30f793312407e3c4b93fc12aa5e7d9e863c1c
+      uses: vmactions/solaris-vm@0dc946f23f755add78ae7bf6338d1320c6df3d17
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
