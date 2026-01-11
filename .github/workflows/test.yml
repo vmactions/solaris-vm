@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "11.4","11.4-gcc", ""]
+        release: [ "11.4","11.4-gcc", "11.4-gcc-14", "11.4-clang-19", ""]
         arch: [ "aarch64", "", "riscv64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
@@ -98,7 +98,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@0b371dbcaa3d36700247ed837fac5f49cbd88a3d
+      uses: vmactions/solaris-vm@ce26bc945bc9e89a91d7df35380bdaca1f1f1415
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -179,7 +179,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "11.4","11.4-gcc", ""]
+        release: [ "11.4","11.4-gcc", "11.4-gcc-14", "11.4-clang-19", ""]
         arch: [ "aarch64", "", "riscv64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
@@ -247,7 +247,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@0b371dbcaa3d36700247ed837fac5f49cbd88a3d
+      uses: vmactions/solaris-vm@ce26bc945bc9e89a91d7df35380bdaca1f1f1415
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -329,7 +329,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "11.4","11.4-gcc", ""]
+        release: [ "11.4","11.4-gcc", "11.4-gcc-14", "11.4-clang-19", ""]
         arch: [ "aarch64", "", "riscv64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
@@ -392,7 +392,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@0b371dbcaa3d36700247ed837fac5f49cbd88a3d
+      uses: vmactions/solaris-vm@ce26bc945bc9e89a91d7df35380bdaca1f1f1415
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -459,7 +459,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "11.4","11.4-gcc", ""]
+        release: [ "11.4","11.4-gcc", "11.4-gcc-14", "11.4-clang-19", ""]
         arch: [ "aarch64", "", "riscv64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
@@ -520,7 +520,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@0b371dbcaa3d36700247ed837fac5f49cbd88a3d
+      uses: vmactions/solaris-vm@ce26bc945bc9e89a91d7df35380bdaca1f1f1415
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
