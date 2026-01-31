@@ -2,6 +2,7 @@
   "name": "vmactions-Solaris",
   "version": "",
   "description": "GitHub actions for Solaris",
+  "type": "module",
   "main": "index.js",
   "repository": {
     "type": "git",
