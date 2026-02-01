@@ -3,14 +3,14 @@ description: 'Run CI in Solaris for GitHub Actions'
 inputs:
   osname:
     description: 'The OS name'
-    required: false
+    required: true
     default: 'Solaris'
   prepare:
     description: 'Install some tools before CI runs'
     required: false
   run:
     description: 'The CI command to run'
-    required: true
+    required: false
   release:
     description: 'The release version of Solaris vm'
     required: false
