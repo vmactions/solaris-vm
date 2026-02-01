@@ -98,7 +98,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@87c15425e43478c340c77e12ddc77d6ae98071ef
+      uses: vmactions/solaris-vm@f50241ab37f429421ca99ff833de34dab0135527
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@87c15425e43478c340c77e12ddc77d6ae98071ef
+      uses: vmactions/solaris-vm@f50241ab37f429421ca99ff833de34dab0135527
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@87c15425e43478c340c77e12ddc77d6ae98071ef
+      uses: vmactions/solaris-vm@f50241ab37f429421ca99ff833de34dab0135527
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@87c15425e43478c340c77e12ddc77d6ae98071ef
+      uses: vmactions/solaris-vm@f50241ab37f429421ca99ff833de34dab0135527
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
