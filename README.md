@@ -1,5 +1,7 @@
 # Run GitHub CI in Solaris ![Test](https://github.com/vmactions/solaris-vm/workflows/Test/badge.svg)
 
+See all the supported VMs: [VMActions.org](https://vmactions.org)
+
 Powered by [AnyVM.org](https://anyvm.org)
 
 Use this action to run your CI in Solaris.
