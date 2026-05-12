@@ -1,4 +1,9 @@
-# Run GitHub CI in Solaris ![Test](https://github.com/vmactions/solaris-vm/workflows/Test/badge.svg)
+# Run GitHub CI in Solaris 
+
+![Test](https://github.com/vmactions/solaris-vm/workflows/Test/badge.svg)
+[![Release](https://img.shields.io/github/v/release/vmactions/solaris-vm?include_prereleases&sort=semver&display_name=tag)](https://github.com/vmactions/solaris-vm/releases)
+
+
 
 See all the supported VMs: [VMActions.org](https://vmactions.org)
 
