@@ -97,7 +97,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -112,6 +112,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
         sync: sshfs
         run: |
           set -e
@@ -239,7 +240,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -254,6 +255,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
         sync: nfs
         run: |
           ls -lah $HOME/work
@@ -382,7 +384,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -397,6 +399,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
         sync: scp
         run: |
           ls -lah $HOME/work
@@ -510,7 +513,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -525,6 +528,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
         disable-cache: ${{ matrix.disableCache }}
         run: |
           env
@@ -646,7 +650,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -661,6 +665,7 @@ jobs:
           udp:"8081": "80"
         usesh: true
         debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
         custom-shell-name: vmsh
         run: |
           env
@@ -726,7 +731,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true 
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         usesh: true
         debug: true
@@ -754,7 +759,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true 
-      uses: vmactions/solaris-vm@b2c473e9943ab33722a76d5d72dd571fd2228462
+      uses: vmactions/solaris-vm@ccfaaeedda3686a8c26cfaee9aadd1c32c30b439
       with:
         usesh: true
         debug: true
