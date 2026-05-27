@@ -97,7 +97,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -240,7 +240,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -384,7 +384,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -513,7 +513,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -650,7 +650,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -731,7 +731,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true 
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         usesh: true
         debug: true
@@ -759,7 +759,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true 
-      uses: vmactions/solaris-vm@e545f22825b03b8dbb3448f48af8d743f44a9f2c
+      uses: vmactions/solaris-vm@3702ccf20b84c7f7c0a9bb68894aba7623f8301d
       with:
         usesh: true
         debug: true
