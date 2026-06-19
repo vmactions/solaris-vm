@@ -1,0 +1,60 @@
+          - release: "11.4"
+            arch: aarch64
+          - release: "11.4"
+            arch: riscv64
+          - release: "11.4"
+            arch: powerpc64
+          - release: "11.4"
+            arch: sparc64
+          - release: "11.4"
+            arch: ppc64le
+          - release: "11.4"
+            arch: s390x
+          - release: "11.4-gcc"
+            arch: aarch64
+          - release: "11.4-gcc"
+            arch: riscv64
+          - release: "11.4-gcc"
+            arch: powerpc64
+          - release: "11.4-gcc"
+            arch: sparc64
+          - release: "11.4-gcc"
+            arch: ppc64le
+          - release: "11.4-gcc"
+            arch: s390x
+          - release: "11.4-gcc-14"
+            arch: aarch64
+          - release: "11.4-gcc-14"
+            arch: riscv64
+          - release: "11.4-gcc-14"
+            arch: powerpc64
+          - release: "11.4-gcc-14"
+            arch: sparc64
+          - release: "11.4-gcc-14"
+            arch: ppc64le
+          - release: "11.4-gcc-14"
+            arch: s390x
+          - release: "11.4-clang-19"
+            arch: aarch64
+          - release: "11.4-clang-19"
+            arch: riscv64
+          - release: "11.4-clang-19"
+            arch: powerpc64
+          - release: "11.4-clang-19"
+            arch: sparc64
+          - release: "11.4-clang-19"
+            arch: ppc64le
+          - release: "11.4-clang-19"
+            arch: s390x
+          - release: ""
+            arch: aarch64
+          - release: ""
+            arch: riscv64
+          - release: ""
+            arch: powerpc64
+          - release: ""
+            arch: sparc64
+          - release: ""
+            arch: ppc64le
+          - release: ""
+            arch: s390x
