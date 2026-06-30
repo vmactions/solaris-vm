@@ -127,7 +127,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -299,7 +299,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -479,7 +479,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -636,7 +636,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -803,7 +803,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -884,7 +884,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         usesh: true
         debug: true
@@ -912,7 +912,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true
-      uses: vmactions/solaris-vm@a6558bb8f207b4891e0b5d26d6fd29ee3d4ff71b
+      uses: vmactions/solaris-vm@4878c5437d275057124fdf9ab0d791ef3c78392f
       with:
         usesh: true
         debug: true
