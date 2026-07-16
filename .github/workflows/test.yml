@@ -127,7 +127,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -320,7 +320,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -718,7 +718,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -906,7 +906,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1018,6 +1018,144 @@ jobs:
 
 
 
+  # cache-after-prepare: the first job seeds (or reuses) the prepared-image
+  # cache; the second job must then restore it, skip 'prepare', and still see
+  # prepare's effect inside the VM. The marker file counts how many times
+  # 'prepare' ever ran in the booted image: it must be exactly 1 in both jobs
+  # (a second 'prepare' run on the cached image would make it 2).
+  testcacheafterprepare:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-24.04
+    name: cache-after-prepare seed Solaris
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+    - uses: actions/checkout@v6
+    - name: Test in Solaris
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')['x86_64'], 'rsync') }}
+      id: test
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
+      with:
+        mem: 4096
+        usesh: true
+        debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
+        cache-after-prepare: true
+        prepare: |
+          pkgutil -y -i socat
+          echo prepared >> "$HOME/.cache_after_prepare_count"
+        run: |
+          set -e
+          [ "$(grep -c prepared "$HOME/.cache_after_prepare_count")" -eq 1 ]
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
+    - name: Collect VM debug artifacts
+      if: failure()
+      run: |
+        mkdir -p ./vm-debug-artifacts
+        find /home/runner/work/_actions -type d -name output 2>/dev/null | while read d; do
+          find "$d" -type f \( -name "*.log" -o -name "*.ppm" \) | while read f; do
+            rel="${f#/home/runner/work/_actions/}"
+            mkdir -p "./vm-debug-artifacts/$(dirname "$rel")"
+            cp "$f" "./vm-debug-artifacts/$rel"
+          done
+        done
+        echo "Collected:"
+        find ./vm-debug-artifacts -type f || true
+    - name: Upload VM debug artifacts
+      if: failure()
+      uses: actions/upload-artifact@v7
+      with:
+        name: vm-debug-${{ github.job }}-${{ strategy.job-index }}
+        path: vm-debug-artifacts/
+        retention-days: 7
+        if-no-files-found: ignore
+
+  testcacheafterpreparehit:
+    needs: testcacheafterprepare
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-24.04
+    name: cache-after-prepare hit Solaris
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+    - uses: actions/checkout@v6
+    # The inputs (notably 'prepare' and the sync method) must be byte-identical
+    # to the seed job above: the prepared-image cache key hashes them.
+    - name: Test in Solaris
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')['x86_64'], 'rsync') }}
+      id: test
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
+      with:
+        mem: 4096
+        usesh: true
+        debug: true
+        debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
+        cache-after-prepare: true
+        prepare: |
+          pkgutil -y -i socat
+          echo prepared >> "$HOME/.cache_after_prepare_count"
+        run: |
+          set -e
+          [ "$(grep -c prepared "$HOME/.cache_after_prepare_count")" -eq 1 ]
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
+    - name: Verify prepare was skipped
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')['x86_64'], 'rsync') }}
+      run: |
+        set -e
+        echo "cache-after-prepare-hit=${{ steps.test.outputs.cache-after-prepare-hit }}"
+        [ "${{ steps.test.outputs.cache-after-prepare-hit }}" = "true" ]
+    - name: Collect VM debug artifacts
+      if: failure()
+      run: |
+        mkdir -p ./vm-debug-artifacts
+        find /home/runner/work/_actions -type d -name output 2>/dev/null | while read d; do
+          find "$d" -type f \( -name "*.log" -o -name "*.ppm" \) | while read f; do
+            rel="${f#/home/runner/work/_actions/}"
+            mkdir -p "./vm-debug-artifacts/$(dirname "$rel")"
+            cp "$f" "./vm-debug-artifacts/$rel"
+          done
+        done
+        echo "Collected:"
+        find ./vm-debug-artifacts -type f || true
+    - name: Upload VM debug artifacts
+      if: failure()
+      uses: actions/upload-artifact@v7
+      with:
+        name: vm-debug-${{ github.job }}-${{ strategy.job-index }}
+        path: vm-debug-artifacts/
+        retention-days: 7
+        if-no-files-found: ignore
+
   testerr:
     strategy:
       fail-fast: false
@@ -1028,7 +1166,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         usesh: true
         debug: true
@@ -1056,7 +1194,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true
-      uses: vmactions/solaris-vm@a8b33a008fdf03958e0582615276b7c7df5f69c0
+      uses: vmactions/solaris-vm@3bbbc166db1e4b8a48a2cda57a56fc4600423aca
       with:
         usesh: true
         debug: true
