@@ -242,6 +242,19 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
 ...
 ```
 
+You can also give only the leading, `.` separated part of a release. The newest release that starts with it is used, so the workflow does not have to be edited for every point release:
+
+```yaml
+...
+    - name: Test
+      id: test
+      uses: vmactions/solaris-vm@v1
+      with:
+        release: "11"
+...
+```
+
+Here `release: "11"` runs the newest `11.x` release of Solaris. Each part you give has to match in full, so a release that does not exist fails the job instead of quietly falling back to another one.
 
 ## 6. Select architecture
 
