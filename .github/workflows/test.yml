@@ -149,7 +149,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -366,7 +366,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -591,7 +591,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -812,7 +812,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1024,7 +1024,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1162,7 +1162,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         mem: 4096
         usesh: true
@@ -1232,7 +1232,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         mem: 4096
         usesh: true
@@ -1303,7 +1303,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         usesh: true
         debug: true
@@ -1331,7 +1331,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true
-      uses: vmactions/solaris-vm@92f47bcf84be0dc1af7cae4930dec3e8737dffc1
+      uses: vmactions/solaris-vm@f0e757c34910c48c8f1fd55371663e16902bcb57
       with:
         usesh: true
         debug: true
