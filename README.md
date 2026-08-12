@@ -38,10 +38,10 @@ All the supported releases are here:
 
 | Release | Comments | x86_64 |
 |---------|---------|---------|
-| 11.4-gcc-14 | CBE with gcc/g++ 14 | ✅ (rsync,scp,nfs) |
-| 11.4-gcc | CBE with default gcc/g++ | ✅ (rsync,scp,nfs) |
-| 11.4-clang-19 | CBE with llvm/clang 19 | ✅ (rsync,scp,nfs) |
-| 11.4 | Normal CBE | ✅ (rsync,scp,nfs) |
+| 11.4-gcc-14 | CBE with gcc/g++ 14 | ✅ (rsync,scp,nfs,tar) |
+| 11.4-gcc | CBE with default gcc/g++ | ✅ (rsync,scp,nfs,tar) |
+| 11.4-clang-19 | CBE with llvm/clang 19 | ✅ (rsync,scp,nfs,tar) |
+| 11.4 | Normal CBE | ✅ (rsync,scp,nfs,tar) |
 
 <!-- extra-column: Comments -->
 <!-- extra-value: 11.4 Normal CBE -->
@@ -81,7 +81,6 @@ jobs:
       uses: vmactions/solaris-vm@v1
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        usesh: true
         prepare: |
           pkgutil -y -i socat
 
@@ -127,6 +126,8 @@ All the source code tree in the Host machine are mounted into the VM.
 All the `GITHUB_*` as well as `CI=true` env variables are passed into the VM.
 
 So, you will have the same directory and same default env variables when you `run` the CI script.
+
+The `prepare` and `run` scripts are always executed with `sh` in the VM, whatever the default login shell of the VM is.
 
 
 
