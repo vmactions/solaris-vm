@@ -149,7 +149,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -365,7 +365,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -589,7 +589,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -809,7 +809,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1020,7 +1020,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1157,7 +1157,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         mem: 4096
         debug: true
@@ -1226,7 +1226,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         mem: 4096
         debug: true
@@ -1296,7 +1296,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         debug: true
         run: |
@@ -1323,7 +1323,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true
-      uses: vmactions/solaris-vm@664243d83f2ddd05cb4cbe9582fe96871ef670f7
+      uses: vmactions/solaris-vm@c46001db27c7d37118046f6994a940a8ea64a21c
       with:
         debug: true
         run: |
