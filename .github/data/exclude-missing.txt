@@ -14,6 +14,8 @@
             arch: i386
           - release: "11.4"
             arch: loongarch64
+          - release: "11.4"
+            arch: armv7
           - release: "11.4-gcc"
             arch: aarch64
           - release: "11.4-gcc"
@@ -30,6 +32,8 @@
             arch: i386
           - release: "11.4-gcc"
             arch: loongarch64
+          - release: "11.4-gcc"
+            arch: armv7
           - release: "11.4-gcc-14"
             arch: aarch64
           - release: "11.4-gcc-14"
@@ -46,6 +50,8 @@
             arch: i386
           - release: "11.4-gcc-14"
             arch: loongarch64
+          - release: "11.4-gcc-14"
+            arch: armv7
           - release: "11.4-clang-19"
             arch: aarch64
           - release: "11.4-clang-19"
@@ -62,6 +68,8 @@
             arch: i386
           - release: "11.4-clang-19"
             arch: loongarch64
+          - release: "11.4-clang-19"
+            arch: armv7
           - release: ""
             arch: aarch64
           - release: ""
@@ -78,3 +86,5 @@
             arch: i386
           - release: ""
             arch: loongarch64
+          - release: ""
+            arch: armv7
