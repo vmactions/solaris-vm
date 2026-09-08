@@ -180,6 +180,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
 ...
 ```
 
+{{VM_MEM_COMMENTS}}
 
 The VM is using all the cpu cores of the host by default, you can use `cpu` option to change the cpu cores:
 
