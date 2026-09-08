@@ -227,6 +227,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
 ...
 ```
 
+Solaris needs at least 4096MB of memory. The VM does not boot with `mem: 2048`, it keeps resetting before sshd starts.
 
 The VM is using all the cpu cores of the host by default, you can use `cpu` option to change the cpu cores:
 
