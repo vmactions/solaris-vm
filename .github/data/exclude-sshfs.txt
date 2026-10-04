@@ -6,5 +6,3 @@
             arch: ""
           - release: "11.4-clang-19"
             arch: ""
-          - release: ""
-            arch: ""
