@@ -170,7 +170,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -387,7 +387,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -667,7 +667,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -806,7 +806,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', 'tar') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -873,7 +873,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', '9p') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -1028,7 +1028,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1137,7 +1137,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         prepare: |
           pkgutil -y -i socat
@@ -1244,7 +1244,7 @@ jobs:
         sparse-checkout-cone-mode: true
     - name: Test in Solaris
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         arch: ${{ matrix.arch }}
         debug: true
@@ -1292,7 +1292,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1427,7 +1427,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -1496,7 +1496,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -1583,7 +1583,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -1651,7 +1651,7 @@ jobs:
     - name: Test in Solaris
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         mem: 4096
         debug: true
@@ -1732,7 +1732,7 @@ jobs:
     - name: Test in Solaris
       id: testerr
       continue-on-error: true
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         debug: true
         # A command that EXISTS and fails, rather than `false` or a made-up
@@ -1778,7 +1778,7 @@ jobs:
     - name: Test in Solaris
       id: testpass
       continue-on-error: true
-      uses: vmactions/solaris-vm@770e524b2ed1f2e46579f66528ed8e4845d20956
+      uses: vmactions/solaris-vm@e4853f4499077e6155829f177737a1df489ed7d9
       with:
         debug: true
         # No `true` and no double quotes: this body runs on every guest, and
