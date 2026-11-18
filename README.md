@@ -38,10 +38,10 @@ All the supported releases are here:
 
 | Release | Comments | x86_64 |
 |---------|---------|---------|
-| 11.4-gcc-14 | CBE with gcc/g++ 14 | ✅ (rsync,scp,nfs,tar) |
-| 11.4-gcc | CBE with default gcc/g++ | ✅ (rsync,scp,nfs,tar) |
-| 11.4-clang-19 | CBE with llvm/clang 19 | ✅ (rsync,scp,nfs,tar) |
 | 11.4 | Normal CBE | ✅ (rsync,scp,nfs,tar) |
+| 11.4-clang-19 | CBE with llvm/clang 19 | ✅ (rsync,scp,nfs,tar) |
+| 11.4-gcc | CBE with default gcc/g++ | ✅ (rsync,scp,nfs,tar) |
+| 11.4-gcc-14 | CBE with gcc/g++ 14 | ✅ (rsync,scp,nfs,tar) |
 
 <!-- extra-column: Comments -->
 <!-- extra-value: 11.4 Normal CBE -->
